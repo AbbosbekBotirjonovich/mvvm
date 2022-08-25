@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import mobiler.abbosbek.mvvm.MyApp
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object NetworkManager {
@@ -16,6 +17,7 @@ object NetworkManager {
             .baseUrl("http://osonsavdo.herokuapp.com/api/")
             .client(getOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create(Gson()))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
     fun getOkHttpClient() : OkHttpClient{
